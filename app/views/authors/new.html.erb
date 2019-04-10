@@ -1,4 +1,12 @@
 <h2>Create an Author</h2>
+
+<% if @errors != nil %>
+   <p class='field_with_errors'><%= "#{@errors.count} errors" %></p>
+  <% @errors.each do |error| %>
+    <p class='field_with_errors'><%= error.flatten[0] %>: <%= error.flatten[1] %></p>
+  <% end %>
+<% end %>
+
 <%= form_tag authors_path, method: "post" do %>
   <div class="field">
     <%= label_tag "name", "Name" %>
